@@ -3,20 +3,20 @@
 
 import UIKit
 
-func hex(num: Int) -> String {
+func hex(_ num: Int) -> String {
     return String(num, radix: 16)
 }
 
 class chip8 {
-    var memory: [Int] = Array(count: 4096, repeatedValue: 0x0)
-    var gfx: [UInt8] = Array(count: 64 * 32, repeatedValue: 0x0)
-    var V: [Int] = Array(count: 16, repeatedValue: 0x0)
+    var memory: [Int] = Array(repeating: 0x0, count: 4096)
+    var gfx: [UInt8] = Array(repeating: 0x0, count: 64 * 32)
+    var V: [Int] = Array(repeating: 0x0, count: 16)
     var I: Int = 0x0
     var pc: Int = 0x0
     var opcode: Int = 0x0
-    var stack: [Int] = Array(count: 16, repeatedValue: 0x0)
+    var stack: [Int] = Array(repeating: 0x0, count: 16)
     var sp: Int = 0x0
-    var key: [Int] = Array(count: 16, repeatedValue: 0x0)
+    var key: [Int] = Array(repeating: 0x0, count: 16)
     var delayTimer: Int = 0
     var drawFlag: Bool = false
     var backBuffer: UIImage?
@@ -63,11 +63,11 @@ class chip8 {
     let ioOpTable = [cpuNull, cpuNull, cpuNull, cpuNull, cpuNull, storageOp, cpuNull, setVxToDelay, cpuNull, loadCharToI, cpuNull, cpuNull, cpuNull, cpuNull, addVxI]
     
     func initialize() {
-        for (index, char) in fontSet.enumerate() {
+        for (index, char) in fontSet.enumerated() {
             memory[index] = char
         }
         
-        for (index, byte) in f8z.enumerate() {
+        for (index, byte) in f8z.enumerated() {
             memory[index + 0x200] = byte
         }
         
@@ -136,7 +136,7 @@ class chip8 {
     
     func clearScreen() {
         //        print("clear screen")
-        for (index, _) in gfx.enumerate() {
+        for (index, _) in gfx.enumerated() {
             gfx[index] = 0
         }
         drawFlag = true
@@ -628,21 +628,21 @@ class chip8 {
             return
         }
         
-        guard let bitmapContext = CGBitmapContextCreate(nil, width, height, 8, width, colorSpace, CGImageAlphaInfo.None.rawValue) else {
+        guard let bitmapContext = CGContext(data: nil, width: width, height: height, bitsPerComponent: 8, bytesPerRow: width, space: colorSpace, bitmapInfo: CGImageAlphaInfo.none.rawValue) else {
             print("context is nil")
             return
         }
         
-        let dataPointer = UnsafeMutablePointer<UInt8>(CGBitmapContextGetData(bitmapContext))
+        let dataPointer = UnsafeMutablePointer<UInt8>(bitmapContext.data)
         for index in 0 ..< width * height {
             dataPointer[index] = gfx[index] * 255
         }
         
-        guard let cgImage = CGBitmapContextCreateImage(bitmapContext) else {
+        guard let cgImage = bitmapContext.makeImage() else {
             print("image is nil")
             return
         }
         //        self.backBuffer = NSImage(CGImage: cgImage, size: NSSize(width: 64, height: 32))
-        self.backBuffer = UIImage(CGImage: cgImage)
+        self.backBuffer = UIImage(cgImage: cgImage)
     }
 }

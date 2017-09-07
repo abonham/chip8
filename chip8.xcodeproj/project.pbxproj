@@ -7,10 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		933C75CA1D672A440080EA88 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 933C75C91D672A440080EA88 /* AppDelegate.swift */; };
-		933C75CC1D672A440080EA88 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 933C75CB1D672A440080EA88 /* ViewController.swift */; };
-		933C75CE1D672A440080EA88 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 933C75CD1D672A440080EA88 /* Assets.xcassets */; };
-		933C75D11D672A440080EA88 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 933C75CF1D672A440080EA88 /* Main.storyboard */; };
 		93F34ACC1D684ADC0032F555 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93F34ACB1D684ADC0032F555 /* AppDelegate.swift */; };
 		93F34ACE1D684ADC0032F555 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93F34ACD1D684ADC0032F555 /* ViewController.swift */; };
 		93F34AD11D684ADC0032F555 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 93F34ACF1D684ADC0032F555 /* Main.storyboard */; };
@@ -21,11 +17,6 @@
 
 /* Begin PBXFileReference section */
 		933C75C61D672A440080EA88 /* chip8.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = chip8.app; sourceTree = BUILT_PRODUCTS_DIR; };
-		933C75C91D672A440080EA88 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		933C75CB1D672A440080EA88 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
-		933C75CD1D672A440080EA88 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
-		933C75D01D672A440080EA88 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
-		933C75D21D672A440080EA88 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		93F34AC91D684ADB0032F555 /* chip8iOS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = chip8iOS.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		93F34ACB1D684ADC0032F555 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		93F34ACD1D684ADC0032F555 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -57,7 +48,6 @@
 		933C75BD1D672A440080EA88 = {
 			isa = PBXGroup;
 			children = (
-				933C75C81D672A440080EA88 /* chip8 */,
 				93F34ACA1D684ADC0032F555 /* chip8iOS */,
 				933C75C71D672A440080EA88 /* Products */,
 			);
@@ -70,18 +60,6 @@
 				93F34AC91D684ADB0032F555 /* chip8iOS.app */,
 			);
 			name = Products;
-			sourceTree = "<group>";
-		};
-		933C75C81D672A440080EA88 /* chip8 */ = {
-			isa = PBXGroup;
-			children = (
-				933C75C91D672A440080EA88 /* AppDelegate.swift */,
-				933C75CB1D672A440080EA88 /* ViewController.swift */,
-				933C75CD1D672A440080EA88 /* Assets.xcassets */,
-				933C75CF1D672A440080EA88 /* Main.storyboard */,
-				933C75D21D672A440080EA88 /* Info.plist */,
-			);
-			path = chip8;
 			sourceTree = "<group>";
 		};
 		93F34ACA1D684ADC0032F555 /* chip8iOS */ = {
@@ -179,8 +157,6 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				933C75CE1D672A440080EA88 /* Assets.xcassets in Resources */,
-				933C75D11D672A440080EA88 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -201,8 +177,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				933C75CC1D672A440080EA88 /* ViewController.swift in Sources */,
-				933C75CA1D672A440080EA88 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -219,14 +193,6 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXVariantGroup section */
-		933C75CF1D672A440080EA88 /* Main.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				933C75D01D672A440080EA88 /* Base */,
-			);
-			name = Main.storyboard;
-			sourceTree = "<group>";
-		};
 		93F34ACF1D684ADC0032F555 /* Main.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
@@ -338,10 +304,12 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				COMBINE_HIDPI_IMAGES = YES;
-				INFOPLIST_FILE = chip8/Info.plist;
+				INFOPLIST_FILE = "$(SRCROOT)/chip8iOS/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = au.com.codemonastery.chip8;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = iphoneos;
+				SUPPORTED_PLATFORMS = "iphonesimulator iphoneos";
 				SWIFT_VERSION = 3.0;
 			};
 			name = Debug;
@@ -351,10 +319,12 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				COMBINE_HIDPI_IMAGES = YES;
-				INFOPLIST_FILE = chip8/Info.plist;
+				INFOPLIST_FILE = "$(SRCROOT)/chip8iOS/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = au.com.codemonastery.chip8;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = iphoneos;
+				SUPPORTED_PLATFORMS = "iphonesimulator iphoneos";
 				SWIFT_VERSION = 3.0;
 			};
 			name = Release;

@@ -58,7 +58,7 @@ class chip8 {
     
     let cpuArithmaticTable = [setVXToVYVal, vXorVY, vXandVY, vXxorVY, addVxVy, subVYfromVX, shiftRightVx, subVXfromVY, cpuNull, cpuNull, cpuNull, cpuNull, cpuNull, cpuNull, shiftLeftVx]
     
-    let keypadTable = []
+    let keypadTable: [Int] = []
     
     let ioOpTable = [cpuNull, cpuNull, cpuNull, cpuNull, cpuNull, storageOp, cpuNull, setVxToDelay, cpuNull, loadCharToI, cpuNull, cpuNull, cpuNull, cpuNull, addVxI]
     
@@ -623,20 +623,22 @@ class chip8 {
             return
         }
         
-        guard let colorSpace = CGColorSpaceCreateDeviceGray() else {
-            print("color space is nil")
-            return
-        }
+        let colorSpace = CGColorSpaceCreateDeviceGray()
         
-        guard let bitmapContext = CGContext(data: nil, width: width, height: height, bitsPerComponent: 8, bytesPerRow: width, space: colorSpace, bitmapInfo: CGImageAlphaInfo.none.rawValue) else {
+        let data = gfx.map({$0 * 255})
+        let dataPointer = UnsafeMutablePointer<UInt8>.allocate(capacity: width * height)
+        dataPointer.initialize(from: data)
+        guard let bitmapContext = CGContext(data: dataPointer, width: width, height: height, bitsPerComponent: 8, bytesPerRow: width, space: colorSpace, bitmapInfo: CGImageAlphaInfo.none.rawValue) else {
             print("context is nil")
             return
         }
         
-        let dataPointer = UnsafeMutablePointer<UInt8>(bitmapContext.data)
-        for index in 0 ..< width * height {
-            dataPointer[index] = gfx[index] * 255
-        }
+//        let dataPointer = UnsafeMutablePointer<UInt8>.allocate(capacity: width * height)
+        //UnsafeMutablePointer<UInt8>(bitmapContext.data!)
+        
+//        for index in 0 ..< width * height {
+//            bitmapContext.data[index] = gfx[index] * 255
+//        }
         
         guard let cgImage = bitmapContext.makeImage() else {
             print("image is nil")

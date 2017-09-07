@@ -635,18 +635,11 @@ class chip8 {
             return
         }
         
-//        let dataPointer = UnsafeMutablePointer<UInt8>.allocate(capacity: width * height)
-        //UnsafeMutablePointer<UInt8>(bitmapContext.data!)
-        
-//        for index in 0 ..< width * height {
-//            bitmapContext.data[index] = gfx[index] * 255
-//        }
-        
         guard let cgImage = bitmapContext.makeImage() else {
             print("image is nil")
             return
         }
-        //        self.backBuffer = NSImage(CGImage: cgImage, size: NSSize(width: 64, height: 32))
+
         self.backBuffer = UIImage(cgImage: cgImage)
     }
 }

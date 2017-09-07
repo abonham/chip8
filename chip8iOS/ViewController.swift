@@ -22,7 +22,6 @@ class ChipViewController: UIViewController {
                 if now.timeIntervalSinceNow < -0.001
                 {
                     self.chip.emulateCycle()
-                    //                self.imageView.image = self.chip.backBuffer
                     self.updateImageView(image: self.chip.backBuffer)
                     now = NSDate()
                 }
